@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'net.ryanland.simpleticketbot'
+
+group 'net.ryanland'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'm2-dv8tion'
+        url 'https://m2.dv8tion.net/releases'
+    }
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    // colossus
+    implementation 'com.github.RyanLandDev:Colossus:afea61ab0f'
+
+    // log
+    implementation 'ch.qos.logback:logback-classic:1.4.7'
+
+    // jda
+    implementation 'net.dv8tion:JDA:5.0.0-beta.24'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': mainClassName
+        )
+    }
+}
+
+compileJava.options.encoding = 'UTF-8'
