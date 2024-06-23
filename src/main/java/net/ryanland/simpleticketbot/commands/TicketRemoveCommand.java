@@ -1,6 +1,7 @@
 package net.ryanland.simpleticketbot.commands;
 
 import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
 import net.ryanland.colossus.Colossus;
 import net.ryanland.colossus.command.BaseCommand;
 import net.ryanland.colossus.command.CommandException;
@@ -19,6 +20,11 @@ import net.ryanland.colossus.sys.message.PresetBuilder;
     description = "Removes a member from this ticket."
 )
 public class TicketRemoveCommand extends BaseCommand implements SlashCommand, SubCommand {
+    @Override
+    public DefaultMemberPermissions getDefaultPermissions() {
+        return DefaultMemberPermissions.enabledFor(Permission.ADMINISTRATOR);
+    }
+
     @Override
     public ArgumentSet getArguments() {
         return new ArgumentSet().addArguments(

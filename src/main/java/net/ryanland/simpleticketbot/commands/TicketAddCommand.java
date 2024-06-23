@@ -1,11 +1,13 @@
 package net.ryanland.simpleticketbot.commands;
 
 import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
 import net.ryanland.colossus.Colossus;
 import net.ryanland.colossus.command.BaseCommand;
 import net.ryanland.colossus.command.CommandException;
 import net.ryanland.colossus.command.arguments.ArgumentSet;
 import net.ryanland.colossus.command.arguments.types.snowflake.MemberArgument;
+import net.ryanland.colossus.command.permission.PermissionHolder;
 import net.ryanland.colossus.command.regular.CommandBuilder;
 import net.ryanland.colossus.command.regular.SlashCommand;
 import net.ryanland.colossus.command.regular.SubCommand;
@@ -19,6 +21,11 @@ import net.ryanland.colossus.sys.message.PresetBuilder;
     description = "Adds a member to this ticket."
 )
 public class TicketAddCommand extends BaseCommand implements SlashCommand, SubCommand {
+    @Override
+    public DefaultMemberPermissions getDefaultPermissions() {
+        return DefaultMemberPermissions.enabledFor(Permission.ADMINISTRATOR);
+    }
+
     @Override
     public ArgumentSet getArguments() {
         return new ArgumentSet().addArguments(
