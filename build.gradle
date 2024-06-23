@@ -1,12 +1,13 @@
 plugins {
     id 'java'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 mainClassName = 'net.ryanland.simpleticketbot.Main'
 
 group 'net.ryanland'
-version '1.0-SNAPSHOT'
+version '1.0'
 
 repositories {
     mavenCentral()
