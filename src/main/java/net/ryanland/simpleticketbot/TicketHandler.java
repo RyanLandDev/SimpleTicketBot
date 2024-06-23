@@ -1,6 +1,7 @@
 package net.ryanland.simpleticketbot;
 
 import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.channel.Channel;
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.callbacks.IReplyCallback;
@@ -42,13 +43,18 @@ public class TicketHandler extends ListenerAdapter {
         });
     }
 
+    public static void deleteTicket(Channel channel) {
+        channel.delete().queue();
+        Colossus.getSQLDatabaseDriver().query("DELETE FROM tickets WHERE channel = ?", channel);
+    }
+
     @Override
     public void onButtonInteraction(ButtonInteractionEvent event) {
         switch (event.getButton().getId()) {
             case "openticket" -> createTicket(new ButtonClickEvent(event));
             case "closeticket" -> {
                 event.deferEdit().queue();
-                event.getChannel().delete().queue();
+                deleteTicket(event.getChannel());
             }
         }
     }

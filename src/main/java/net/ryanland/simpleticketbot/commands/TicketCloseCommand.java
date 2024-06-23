@@ -8,6 +8,7 @@ import net.ryanland.colossus.command.regular.CommandBuilder;
 import net.ryanland.colossus.command.regular.SlashCommand;
 import net.ryanland.colossus.command.regular.SubCommand;
 import net.ryanland.colossus.events.command.SlashCommandEvent;
+import net.ryanland.simpleticketbot.TicketHandler;
 
 @CommandBuilder(
     name = "close",
@@ -26,6 +27,6 @@ public class TicketCloseCommand extends BaseCommand implements SlashCommand, Sub
         }
 
         event.reply("Ticket closed.", true);
-        event.getChannel().delete().queue();
+        TicketHandler.deleteTicket(event.getChannel());
     }
 }
