@@ -25,9 +25,9 @@ public class Main {
             // sqlite db
             .setDatabaseDriver(((SQLiteDatabaseDriver) new SQLiteDatabaseDriver("db.sqlite")
                 .updatePrimaryKeys("tickets", "author", "channel"))
-                .registerValueProvider("tickets", "author", "varchar(25) constraint ticket_pk primary key",
+                .registerValueProvider("tickets", "author", "varchar(25) not null",
                     authorId -> authorId, result -> result.getString("author"))
-                .registerValueProvider("tickets", "channel", "varchar(25) constraint ticket_pk primary key",
+                .registerValueProvider("tickets", "channel", "varchar(25) not null",
                     channelId -> channelId, result -> result.getString("channel"))
             ).registerProviders(SQLProvider.of("tickets"))
             // misc

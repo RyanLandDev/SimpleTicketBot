@@ -3,7 +3,7 @@ plugins {
     id 'application'
 }
 
-mainClassName = 'net.ryanland.simpleticketbot'
+mainClassName = 'net.ryanland.simpleticketbot.Main'
 
 group 'net.ryanland'
 version '1.0-SNAPSHOT'
@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
     // colossus
-    implementation 'com.github.RyanLandDev:Colossus:afea61ab0f'
+    implementation 'com.github.RyanLandDev:Colossus:e0273da59e'
 
     // log
     implementation 'ch.qos.logback:logback-classic:1.4.7'
